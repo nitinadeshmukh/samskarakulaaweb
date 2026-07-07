@@ -25,4 +25,8 @@ Samskara, Shodasha Samskaras, Gotra, Veda/Shakha, Kula Devata, Muhurta, Panchang
 
 ## Deployment
 
-See `README.md` for the CI/CD summary. Full VPS-side nginx/certbot setup lives in `samskarakulaaapi`'s and the original `SamskaraKula` monorepo's operational notes.
+**Confirmed live 2026-07-07**: nginx + TLS (certbot, expires 2026-10-05) configured on VPS `srv1776252.hstgr.cloud` (89.116.122.213, Mumbai — a *different* server than the backend, see `samskarakulaaapi`'s CLAUDE.md for the full VPS map). Static root is `/var/www/samskarakula.com`. Both `https://samskarakula.com` and `https://www.samskarakula.com` verified serving the real built site (not a placeholder) via a manual `scp` deploy — real HTML/JS/CSS confirmed live via curl.
+
+**Manual deploy used an SSH key added specifically for this** (`samskarakula-website-deploy`, ed25519, public key appended to `/root/.ssh/authorized_keys` on that VPS with explicit user sign-off — this was NOT auto-approved, since it's standing access on a shared server). The private key lives outside any repo at `/Volumes/E/Claude/.deploy_keys/website_deploy_key` (gitignored location, never commit it). This same key is the natural candidate for the `VPS_SSH_KEY` GitHub Actions secret once the repo exists — reuse it rather than generating a second one, to avoid key sprawl on a shared VPS.
+
+See `README.md` for the CI/CD summary once the GitHub repo is created.
