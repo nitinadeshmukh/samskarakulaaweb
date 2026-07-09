@@ -16,6 +16,13 @@ jobs:
 
       - run: npm install
       - run: npm run build
+        env:
+          # Public anon key — safe to bake into a client bundle (RLS-scoped,
+          # same value already shipped in all 3 Expo apps' bundles). Not a
+          # GitHub secret because it isn't one; the outage this fixes was
+          # this var being *absent* in CI, not it being sensitive.
+          VITE_SUPABASE_URL: https://api.samskarakula.com
+          VITE_SUPABASE_ANON_KEY: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlIjoiYW5vbiIsImlzcyI6InN1cGFiYXNlIiwiaWF0IjoxNzgyOTcwNDIzLCJleHAiOjE5NDA2NTA0MjN9.hfK1ppf2SRaNw9r_pVFnjJK6KWVYEk72BNsywAdLQ48
 
       - name: Sync static build to VPS
         uses: burnett01/rsync-deployments@7.0.1

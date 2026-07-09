@@ -5,10 +5,19 @@ import { createClient } from '@supabase/supabase-js';
 // 0017). Everything else about this site is still a static, backend-free
 // build; this is a deliberately narrow, scoped exception, not a reversal of
 // that design — see this repo's CLAUDE.md "Analytics" section.
-const supabase = createClient(
-  import.meta.env.VITE_SUPABASE_URL as string,
-  import.meta.env.VITE_SUPABASE_ANON_KEY as string,
-);
+//
+// createClient() throws synchronously if either arg is missing/empty — and
+// since this module is imported from App.tsx, that exception used to crash
+// the entire site (a blank page for every visitor) if the build environment
+// ever lacked these vars, exactly what happened on the first real CI deploy
+// (this analytics wiring had only ever been built locally before, where a
+// dev .env supplied them). Guarded here so a misconfigured env degrades to
+// "analytics silently doesn't fire" instead of "the whole site is down" —
+// matching trackEvent's own "should never break the page" comment below,
+// which this guard is what actually makes true.
+const supabaseUrl = import.meta.env.VITE_SUPABASE_URL as string | undefined;
+const supabaseAnonKey = import.meta.env.VITE_SUPABASE_ANON_KEY as string | undefined;
+const supabase = supabaseUrl && supabaseAnonKey ? createClient(supabaseUrl, supabaseAnonKey) : null;
 
 const SESSION_KEY = 'sk_session_id';
 
@@ -32,6 +41,7 @@ function getSessionId(): string {
 // the request once awaited or .then()'d. `void builder` alone never triggers
 // the fetch — the .then()/.catch() below is what actually fires it.
 export function trackEvent(eventName: string, properties: Record<string, unknown> = {}) {
+  if (!supabase) return;
   supabase
     .from('analytics_events')
     .insert({
