@@ -1,6 +1,7 @@
 import { useEffect } from 'react';
 
 import { trackEvent } from './lib/analytics';
+import { FAQ } from './sections/FAQ';
 import { Features } from './sections/Features';
 import { Footer } from './sections/Footer';
 import { Hero } from './sections/Hero';
@@ -29,6 +30,7 @@ export default function App() {
       <RatingsReviews />
       <Priests />
       <SacredSymbols />
+      <FAQ />
       <Waitlist />
       <Footer />
     </div>
