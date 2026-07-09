@@ -1,31 +1,48 @@
+import { GeoDots } from '../components/GeoAccents';
+import { Reveal } from '../components/Reveal';
+import { useSectionView } from '../hooks/useSectionView';
+
 const PROBLEMS = [
   {
+    icon: '📖',
     title: 'The knowledge gap',
-    body: "Families no longer track the correct Vedic timing (Muhurta) for each life-cycle rite, or which rites apply to which family member.",
+    body: 'Families no longer track the correct Vedic timing (Muhurta) for each life-cycle rite, or which rites apply to which family member.',
   },
   {
+    icon: '🌍',
     title: 'The access gap',
     body: "NRIs and urban families often can't find a qualified, background-checked priest who matches their regional tradition and language.",
   },
   {
+    icon: '🔍',
     title: 'The trust gap',
     body: 'When a ritual is outsourced or performed remotely, families have no reliable way to verify it was performed correctly, for the right person, at the right time.',
   },
 ];
 
 export function Problem() {
+  const ref = useSectionView('problem');
   return (
-    <section className="bg-neutral-50 px-6 py-20">
+    <section ref={ref} className="relative overflow-hidden bg-neutral-50 px-6 py-24">
+      <GeoDots className="left-8 top-8 hidden lg:block" />
       <div className="mx-auto max-w-6xl">
-        <h2 className="mb-12 text-center text-3xl font-bold text-neutral-900">
-          Tradition shouldn't get lost in distance.
-        </h2>
-        <div className="grid gap-8 sm:grid-cols-3">
-          {PROBLEMS.map((p) => (
-            <div key={p.title} className="rounded-2xl border border-neutral-200 bg-white p-6">
-              <h3 className="mb-2 text-lg font-semibold text-kula-navy">{p.title}</h3>
-              <p className="text-sm leading-relaxed text-neutral-600">{p.body}</p>
-            </div>
+        <Reveal className="relative mx-auto mb-16 max-w-2xl text-center">
+          <p className="eyebrow">The problem</p>
+          <h2 className="font-display text-3xl font-semibold text-neutral-900 sm:text-4xl">
+            Tradition shouldn&apos;t get lost in distance.
+          </h2>
+        </Reveal>
+        <div className="grid gap-6 sm:grid-cols-3">
+          {PROBLEMS.map((p, i) => (
+            <Reveal key={p.title} delay={i * 100}>
+              <div className="h-full rounded-2xl border border-neutral-200/70 bg-white p-7 shadow-soft transition hover:-translate-y-1 hover:shadow-lg">
+                <div className="mb-5 flex h-12 w-12 items-center justify-center rounded-xl bg-kula-navy/5 text-2xl">
+                  {p.icon}
+                </div>
+                <h3 className="mb-2 text-lg font-semibold text-kula-navy">{p.title}</h3>
+                <p className="text-sm leading-relaxed text-neutral-600">{p.body}</p>
+              </div>
+            </Reveal>
           ))}
         </div>
       </div>

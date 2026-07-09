@@ -1,3 +1,6 @@
+import { Reveal } from '../components/Reveal';
+import { useSectionView } from '../hooks/useSectionView';
+
 const FEATURES = [
   {
     icon: '📅',
@@ -22,24 +25,29 @@ const FEATURES = [
 ];
 
 export function Features() {
+  const ref = useSectionView('features');
   return (
-    <section id="features" className="px-6 py-20">
+    <section ref={ref} id="features" className="px-6 py-24">
       <div className="mx-auto max-w-6xl">
-        <h2 className="mb-12 text-center text-3xl font-bold text-neutral-900">
-          Everything a family needs, in one place.
-        </h2>
+        <Reveal className="mx-auto mb-16 max-w-2xl text-center">
+          <p className="eyebrow">What you get</p>
+          <h2 className="font-display text-3xl font-semibold text-neutral-900 sm:text-4xl">
+            Everything a family needs, in one place.
+          </h2>
+        </Reveal>
         <div className="grid gap-6 sm:grid-cols-2">
-          {FEATURES.map((f) => (
-            <div
-              key={f.title}
-              className="flex gap-4 rounded-2xl border border-neutral-200 p-6 shadow-sm shadow-neutral-100"
-            >
-              <div className="text-3xl">{f.icon}</div>
-              <div>
-                <h3 className="mb-1 text-lg font-semibold text-neutral-900">{f.title}</h3>
-                <p className="text-sm leading-relaxed text-neutral-600">{f.body}</p>
+          {FEATURES.map((f, i) => (
+            <Reveal key={f.title} delay={i * 80}>
+              <div className="flex h-full gap-5 rounded-2xl border border-neutral-200/70 p-7 shadow-soft transition hover:-translate-y-1 hover:border-kula-amber/30 hover:shadow-lg">
+                <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-gradient-to-br from-kula-amber/15 to-kula-gold/10 text-2xl">
+                  {f.icon}
+                </div>
+                <div>
+                  <h3 className="mb-1.5 text-lg font-semibold text-neutral-900">{f.title}</h3>
+                  <p className="text-sm leading-relaxed text-neutral-600">{f.body}</p>
+                </div>
               </div>
-            </div>
+            </Reveal>
           ))}
         </div>
       </div>
