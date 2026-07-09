@@ -69,6 +69,9 @@ export function Hero() {
 
       <div className="relative mx-auto max-w-3xl px-6 text-center">
         <Reveal>
+          <div className="mb-6 flex justify-center">
+            <Logo size={112} className="drop-shadow-xl" />
+          </div>
           <p className="mb-5 text-sm font-semibold uppercase tracking-[0.25em] text-white/80">संस्कार कुल</p>
           <h1 className="mb-6 font-sans text-5xl font-black leading-[1.05] tracking-tight sm:text-6xl lg:text-7xl">
             Never miss a samskara.
