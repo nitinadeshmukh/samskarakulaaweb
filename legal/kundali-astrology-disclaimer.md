@@ -1,11 +1,5 @@
 # Kundali &amp; Astrology Disclaimer
 
-**Effective date:** [EFFECTIVE DATE]
-
-> **Draft for legal review.** Template based on the product's actual Kundali/
-> Muhurta features; not reviewed by a lawyer. Replace every `[PLACEHOLDER]` and
-> confirm with counsel before publishing.
-
 This disclaimer applies to the Vedic birth chart ("**Kundali**"), the ritual
 calendar, any **Muhurta** (auspicious time) indications, and related astrological
 content provided by Samskara Kula, operated by [LEGAL ENTITY NAME]. It forms part
