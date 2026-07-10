@@ -29,7 +29,7 @@ export function Nav() {
       <div className="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
         <a href="#" className="flex items-center gap-2.5">
           <Logo size={32} />
-          <span className="font-display text-lg font-semibold text-neutral-900">Samskara Kula</span>
+          <img src="/wordmark.webp" alt="Samskara Kula" className="h-7 w-auto" />
         </a>
 
         <nav className="hidden items-center gap-8 text-sm font-medium text-neutral-600 sm:flex">
