@@ -15,9 +15,20 @@ import { createClient } from '@supabase/supabase-js';
 // "analytics silently doesn't fire" instead of "the whole site is down" —
 // matching trackEvent's own "should never break the page" comment below,
 // which this guard is what actually makes true.
+//
+// Also gated on `typeof window !== 'undefined'`: analytics only ever fires
+// from inside a browser (trackEvent is only ever called from a useEffect),
+// so a client has no reason to exist during SSR prerendering
+// (scripts/prerender.js) — and constructing one there isn't just wasted
+// work, it crashes the build on Node 20 (GitHub Actions' runner as of this
+// writing): @supabase/supabase-js's realtime-js subclient requires a native
+// `WebSocket` global, which doesn't exist until Node 22.
 const supabaseUrl = import.meta.env.VITE_SUPABASE_URL as string | undefined;
 const supabaseAnonKey = import.meta.env.VITE_SUPABASE_ANON_KEY as string | undefined;
-const supabase = supabaseUrl && supabaseAnonKey ? createClient(supabaseUrl, supabaseAnonKey) : null;
+const supabase =
+  typeof window !== 'undefined' && supabaseUrl && supabaseAnonKey
+    ? createClient(supabaseUrl, supabaseAnonKey)
+    : null;
 
 const SESSION_KEY = 'sk_session_id';
 
