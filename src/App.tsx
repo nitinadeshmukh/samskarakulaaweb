@@ -43,7 +43,16 @@ export default function App({ path }: AppProps) {
     trackEvent('page_view', { path });
   }, [path]);
 
-  const legalDoc = LEGAL_ROUTES[path];
+  // Strip a trailing slash before matching — a direct load of
+  // /legal/kundali-disclaimer/ (nginx's `$uri/` fallback resolves this to the
+  // right prerendered file, so the initial HTML looks correct) still leaves
+  // window.location.pathname as ".../kundali-disclaimer/" once JS takes over.
+  // Without normalizing, that fails the exact-match lookup below, and the
+  // client-side render falls through to the homepage instead of the legal
+  // page — a real bug, not just a lint nit: it visibly replaced the
+  // disclaimer with the homepage after hydration.
+  const normalizedPath = path.length > 1 ? path.replace(/\/+$/, '') : path;
+  const legalDoc = LEGAL_ROUTES[normalizedPath];
   if (legalDoc) {
     return <LegalPage title={legalDoc.title} markdown={legalDoc.markdown} />;
   }
