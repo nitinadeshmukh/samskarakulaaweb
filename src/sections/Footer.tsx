@@ -1,4 +1,5 @@
 import { Logo } from '../components/Logo';
+import { SacredWallpaper } from '../components/SacredWallpaper';
 
 const PRODUCT_LINKS = [
   { href: '#services', label: 'Services' },
@@ -16,8 +17,9 @@ const LEGAL_LINKS = [
 
 export function Footer() {
   return (
-    <footer className="border-t border-neutral-200 bg-neutral-50 px-6 py-16">
-      <div className="mx-auto max-w-6xl">
+    <footer className="relative overflow-hidden border-t border-neutral-200 bg-neutral-50 px-6 py-16">
+      <SacredWallpaper />
+      <div className="relative z-10 mx-auto max-w-6xl">
         <div className="grid grid-cols-2 gap-10 sm:grid-cols-5">
           <div className="col-span-2 sm:col-span-1">
             <div className="flex items-center gap-2.5">

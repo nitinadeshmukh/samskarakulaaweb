@@ -1,6 +1,7 @@
 import { useState } from 'react';
 
 import { Reveal } from '../components/Reveal';
+import { SacredWallpaper } from '../components/SacredWallpaper';
 import { useSectionView } from '../hooks/useSectionView';
 
 const FAQS = [
@@ -54,9 +55,10 @@ export function FAQ() {
   const [openIndex, setOpenIndex] = useState<number | null>(0);
 
   return (
-    <section ref={ref} id="faq" className="bg-neutral-50 px-6 py-24">
+    <section ref={ref} id="faq" className="relative overflow-hidden bg-neutral-50 px-6 py-24">
+      <SacredWallpaper />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(FAQ_JSON_LD) }} />
-      <div className="mx-auto max-w-3xl">
+      <div className="relative z-10 mx-auto max-w-3xl">
         <Reveal className="mb-12 text-center">
           <p className="eyebrow mx-auto">Questions</p>
           <h2 className="font-display text-3xl font-semibold text-neutral-900 sm:text-4xl">
