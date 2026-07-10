@@ -4,11 +4,48 @@
     <meta charset="UTF-8" />
     <link rel="icon" type="image/png" href="/favicon.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta
-      name="description"
-      content="Samskara Kula — a family-tree-driven ritual calendar, vetted priest marketplace, and tamper-evident Proof-of-Ritual archive for Hindu life-cycle samskaras."
-    />
-    <title>Samskara Kula — Never miss a samskara</title>
+
+    <title>__TITLE__</title>
+    <meta name="description" content="__DESCRIPTION__" />
+    <link rel="canonical" href="__CANONICAL__" />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Samskara Kula" />
+    <meta property="og:title" content="__TITLE__" />
+    <meta property="og:description" content="__DESCRIPTION__" />
+    <meta property="og:url" content="__CANONICAL__" />
+    <meta property="og:image" content="https://samskarakula.com/logo.png" />
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content="__TITLE__" />
+    <meta name="twitter:description" content="__DESCRIPTION__" />
+    <meta name="twitter:image" content="https://samskarakula.com/logo.png" />
+
+    <!-- Site-wide structured data — same on every route (FAQPage schema for
+         the homepage FAQ lives alongside FAQ.tsx's content instead, so it
+         can't drift from what's actually rendered there). -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@graph": [
+          {
+            "@type": "Organization",
+            "@id": "https://samskarakula.com/#organization",
+            "name": "Samskara Kula",
+            "url": "https://samskarakula.com/",
+            "logo": "https://samskarakula.com/logo.png",
+            "description": "A family-tree-driven ritual calendar, vetted priest marketplace, and tamper-evident Proof-of-Ritual archive for Hindu life-cycle samskaras (Shodasha Samskaras)."
+          },
+          {
+            "@type": "WebSite",
+            "@id": "https://samskarakula.com/#website",
+            "url": "https://samskarakula.com/",
+            "name": "Samskara Kula",
+            "publisher": { "@id": "https://samskarakula.com/#organization" }
+          }
+        ]
+      }
+    </script>
+
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link

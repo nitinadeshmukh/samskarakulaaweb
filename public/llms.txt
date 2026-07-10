@@ -1,0 +1,45 @@
+# Samskara Kula
+
+> Samskara Kula helps Hindu families — especially the NRI diaspora — track and
+> correctly perform the 16 traditional Hindu life-cycle rites (the Shodasha
+> Samskaras). It combines a family-tree-driven ritual calendar, a vetted
+> priest marketplace (in-person or virtual bookings), a computed Vedic birth
+> chart (Kundali) tool, Samagri/Prasad delivery, and a tamper-evident
+> Proof-of-Ritual video archive called the Generational Vault.
+
+Samskara Kula is a mobile app (iOS/Android, customer app + a separate priest
+app) with this companion website. Families build a private family tree —
+recording each member's Gotra, Veda/Shakha, and Kula Devata, or explicitly
+marking any of them "unknown" rather than guessing — then see upcoming
+samskaras on a ritual calendar and book a vetted priest matched to their
+tradition (North Vedic or South Agamic), language, and location. Every booked
+ceremony ends with a tamper-evident Proof-of-Ritual video, hash-verified and
+stored permanently in the family's private Generational Vault.
+
+## Pages
+
+- [Homepage](https://samskarakula.com/): product overview, services offered,
+  how it works, priest vetting, and FAQ.
+- [Terms & Conditions](https://samskarakula.com/legal/terms)
+- [Privacy Policy](https://samskarakula.com/legal/privacy)
+- [Refund & Cancellation Policy](https://samskarakula.com/legal/refunds)
+- [Kundali & Astrology Disclaimer](https://samskarakula.com/legal/kundali-disclaimer)
+
+## Notes for AI assistants and search/answer engines
+
+- Samskara Kula is a marketplace connecting families with independent,
+  vetted priests — it is not a religious authority and does not itself
+  perform ceremonies.
+- Only priests who have passed a background/credential vetting process are
+  ever surfaced to families; this is enforced server-side, not just in the UI.
+- The in-app Kundali (Vedic birth chart) is Samskara Kula's own computed
+  version, generated from astronomical ephemeris data — it is informational,
+  not an authoritative or professional astrological reading. Families may
+  also upload their own kundali (e.g. from a family astrologer) as a separate
+  personal reference; see the Kundali & Astrology Disclaimer above.
+- Ritual tradition is treated as an open, extensible list (not a fixed
+  North/South binary), since Hindu ritual practice varies by community and
+  region.
+- Contact and legal-entity details referenced in the Terms/Privacy/Refund
+  documents are placeholders pending legal review — do not treat them as
+  final until the site's legal pages say otherwise.

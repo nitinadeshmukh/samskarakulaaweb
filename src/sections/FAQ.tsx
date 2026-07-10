@@ -36,12 +36,26 @@ const FAQS = [
   },
 ];
 
+// FAQPage structured data, generated from the same FAQS array the accordion
+// renders — a hand-duplicated JSON-LD block would silently drift out of sync
+// with what's actually on the page.
+const FAQ_JSON_LD = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: FAQS.map((item) => ({
+    '@type': 'Question',
+    name: item.question,
+    acceptedAnswer: { '@type': 'Answer', text: item.answer },
+  })),
+};
+
 export function FAQ() {
   const ref = useSectionView('faq');
   const [openIndex, setOpenIndex] = useState<number | null>(0);
 
   return (
     <section ref={ref} id="faq" className="bg-neutral-50 px-6 py-24">
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(FAQ_JSON_LD) }} />
       <div className="mx-auto max-w-3xl">
         <Reveal className="mb-12 text-center">
           <p className="eyebrow mx-auto">Questions</p>
@@ -75,7 +89,12 @@ export function FAQ() {
                     <path d="M12 4v16 M4 12h16" />
                   </svg>
                 </button>
-                {isOpen && <p className="pb-5 pr-8 text-sm leading-relaxed text-neutral-600">{item.answer}</p>}
+                {/* Always rendered (not conditional) so every answer — not just
+                    whichever is expanded — is present in the prerendered HTML
+                    for crawlers; `hidden` just keeps the visual accordion UX. */}
+                <p className={`pb-5 pr-8 text-sm leading-relaxed text-neutral-600 ${isOpen ? '' : 'hidden'}`}>
+                  {item.answer}
+                </p>
               </Reveal>
             );
           })}

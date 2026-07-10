@@ -31,12 +31,19 @@ const LEGAL_ROUTES: Record<string, { title: string; markdown: string }> = {
   '/legal/kundali-disclaimer': { title: 'Kundali & Astrology Disclaimer', markdown: kundaliDisclaimerMd },
 };
 
-export default function App() {
-  useEffect(() => {
-    trackEvent('page_view', { path: window.location.pathname });
-  }, []);
+interface AppProps {
+  // Explicit so this component can be server-rendered per route by
+  // scripts/prerender.js (no `window` there) — the client entry (main.tsx)
+  // passes window.location.pathname.
+  path: string;
+}
 
-  const legalDoc = LEGAL_ROUTES[window.location.pathname];
+export default function App({ path }: AppProps) {
+  useEffect(() => {
+    trackEvent('page_view', { path });
+  }, [path]);
+
+  const legalDoc = LEGAL_ROUTES[path];
   if (legalDoc) {
     return <LegalPage title={legalDoc.title} markdown={legalDoc.markdown} />;
   }
