@@ -1,5 +1,6 @@
 import { GeoCircle, GeoDots, GeoTriangle } from '../components/GeoAccents';
 import { Reveal } from '../components/Reveal';
+import { SacredWallpaper } from '../components/SacredWallpaper';
 import { useSectionView } from '../hooks/useSectionView';
 
 // A composed mock of the priest companion app's Jobs screen — original CSS
@@ -36,8 +37,9 @@ function PriestAppMock() {
 export function Priests() {
   const ref = useSectionView('priests');
   return (
-    <section ref={ref} id="priests" className="bg-neutral-50 px-6 py-24">
-      <div className="mx-auto grid max-w-6xl items-center gap-14 sm:grid-cols-2">
+    <section ref={ref} id="priests" className="relative overflow-hidden bg-neutral-50 px-6 py-24">
+      <SacredWallpaper />
+      <div className="relative z-10 mx-auto grid max-w-6xl items-center gap-14 sm:grid-cols-2">
         <Reveal>
           <p className="eyebrow">For priests</p>
           <h2 className="mb-4 font-display text-3xl font-semibold text-neutral-900 sm:text-4xl">

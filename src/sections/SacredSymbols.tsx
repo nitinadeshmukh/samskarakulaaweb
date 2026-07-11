@@ -1,6 +1,7 @@
 import { SacredSymbolIcon } from '../components/SacredSymbolIcon';
 import { HINDU_SYMBOLS } from '../data/hinduSymbols';
 import { Reveal } from '../components/Reveal';
+import { SacredWallpaper } from '../components/SacredWallpaper';
 
 // Symbols with bespoke line-art render as icon tiles; the rest of the
 // documented 24 (src/data/hinduSymbols.ts) still appear, as name-only chips,
@@ -10,8 +11,9 @@ const NAMED_ONLY = HINDU_SYMBOLS.filter((s) => !s.icon);
 
 export function SacredSymbols() {
   return (
-    <section className="bg-white px-6 py-24">
-      <div className="mx-auto max-w-5xl text-center">
+    <section className="relative overflow-hidden bg-white px-6 py-24">
+      <SacredWallpaper />
+      <div className="relative z-10 mx-auto max-w-5xl text-center">
         <Reveal>
           <p className="eyebrow">Rooted in tradition</p>
           <h2 className="mx-auto mb-4 max-w-3xl font-display text-3xl font-semibold text-neutral-900 sm:text-4xl">

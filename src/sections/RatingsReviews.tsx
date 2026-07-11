@@ -1,4 +1,5 @@
 import { Reveal } from '../components/Reveal';
+import { SacredWallpaper } from '../components/SacredWallpaper';
 import { useSectionView } from '../hooks/useSectionView';
 
 // Samskara Kula is pre-launch — there are no real reviews yet (see
@@ -44,8 +45,9 @@ function Stars() {
 export function RatingsReviews() {
   const ref = useSectionView('ratings-reviews');
   return (
-    <section ref={ref} className="bg-white px-6 py-24">
-      <div className="mx-auto max-w-6xl">
+    <section ref={ref} className="relative overflow-hidden bg-white px-6 py-24">
+      <SacredWallpaper />
+      <div className="relative z-10 mx-auto max-w-6xl">
         <Reveal className="mx-auto mb-4 max-w-2xl text-center">
           <p className="eyebrow">Trust, built in</p>
           <h2 className="font-display text-3xl font-semibold text-neutral-900 sm:text-4xl">

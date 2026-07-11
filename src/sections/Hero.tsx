@@ -1,3 +1,4 @@
+import { HeroSlider } from '../components/HeroSlider';
 import { Logo } from '../components/Logo';
 import { Reveal } from '../components/Reveal';
 import { Squiggles } from '../components/Squiggles';
@@ -73,13 +74,11 @@ export function Hero() {
             <Logo size={112} className="drop-shadow-xl" />
           </div>
           <p className="mb-5 text-sm font-semibold uppercase tracking-[0.25em] text-white/80">संस्कार कुल</p>
-          <h1 className="mb-6 font-sans text-5xl font-black leading-[1.05] tracking-tight sm:text-6xl lg:text-7xl">
-            Never miss a samskara.
-          </h1>
-          <p className="mx-auto mb-10 max-w-xl text-lg leading-relaxed text-white/90">
-            A family-tree-driven ritual calendar, a vetted priest marketplace, and a tamper-evident
-            record of every rite performed — built for Hindu families across the diaspora.
-          </p>
+
+          <div className="mb-10">
+            <HeroSlider />
+          </div>
+
           <div className="flex flex-col items-center justify-center gap-4 sm:flex-row">
             <a
               href="#waitlist"

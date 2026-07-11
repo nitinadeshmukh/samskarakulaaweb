@@ -1,5 +1,6 @@
 import { GeoDots } from '../components/GeoAccents';
 import { Reveal } from '../components/Reveal';
+import { SacredWallpaper } from '../components/SacredWallpaper';
 import { useSectionView } from '../hooks/useSectionView';
 
 const PROBLEMS = [
@@ -24,8 +25,9 @@ export function Problem() {
   const ref = useSectionView('problem');
   return (
     <section ref={ref} className="relative overflow-hidden bg-neutral-50 px-6 py-24">
+      <SacredWallpaper />
       <GeoDots className="left-8 top-8 hidden lg:block" />
-      <div className="mx-auto max-w-6xl">
+      <div className="relative z-10 mx-auto max-w-6xl">
         <Reveal className="relative mx-auto mb-16 max-w-2xl text-center">
           <p className="eyebrow">The problem</p>
           <h2 className="font-display text-3xl font-semibold text-neutral-900 sm:text-4xl">

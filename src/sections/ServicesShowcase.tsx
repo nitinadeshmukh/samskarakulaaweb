@@ -1,5 +1,6 @@
 import { SacredSymbolIcon } from '../components/SacredSymbolIcon';
 import { Reveal } from '../components/Reveal';
+import { SacredWallpaper } from '../components/SacredWallpaper';
 import { useSectionView } from '../hooks/useSectionView';
 
 // Real service names, not placeholders — these mirror the actual bookable
@@ -19,8 +20,9 @@ const SERVICES = [
 export function ServicesShowcase() {
   const ref = useSectionView('services');
   return (
-    <section ref={ref} id="services" className="bg-neutral-50 px-6 py-24">
-      <div className="mx-auto max-w-6xl">
+    <section ref={ref} id="services" className="relative overflow-hidden bg-neutral-50 px-6 py-24">
+      <SacredWallpaper />
+      <div className="relative z-10 mx-auto max-w-6xl">
         <Reveal className="mx-auto mb-14 max-w-2xl text-center">
           <p className="eyebrow">Showcase</p>
           <h2 className="font-display text-3xl font-semibold text-neutral-900 sm:text-4xl">
