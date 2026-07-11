@@ -1,4 +1,5 @@
 import { Reveal } from '../components/Reveal';
+import { SacredWallpaper } from '../components/SacredWallpaper';
 import { useSectionView } from '../hooks/useSectionView';
 
 const FEATURES = [
@@ -27,8 +28,9 @@ const FEATURES = [
 export function Features() {
   const ref = useSectionView('features');
   return (
-    <section ref={ref} id="features" className="px-6 py-24">
-      <div className="mx-auto max-w-6xl">
+    <section ref={ref} id="features" className="relative overflow-hidden bg-neutral-50 px-6 py-24">
+      <SacredWallpaper />
+      <div className="relative z-10 mx-auto max-w-6xl">
         <Reveal className="mx-auto mb-16 max-w-2xl text-center">
           <p className="eyebrow">What you get</p>
           <h2 className="font-display text-3xl font-semibold text-neutral-900 sm:text-4xl">
