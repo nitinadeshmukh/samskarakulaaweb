@@ -8,6 +8,7 @@ import { Footer } from './sections/Footer';
 import { Hero } from './sections/Hero';
 import { HowItWorks } from './sections/HowItWorks';
 import { Nav } from './sections/Nav';
+import { PaymentTrust } from './sections/PaymentTrust';
 import { Priests } from './sections/Priests';
 import { Problem } from './sections/Problem';
 import { RatingsReviews } from './sections/RatingsReviews';
@@ -62,6 +63,7 @@ export default function App({ path }: AppProps) {
       <Nav />
       <Hero />
       <Problem />
+      <PaymentTrust />
       <ServicesShowcase />
       <Features />
       <HowItWorks />
