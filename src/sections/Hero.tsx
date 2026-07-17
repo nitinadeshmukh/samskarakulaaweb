@@ -64,7 +64,7 @@ function CalendarMock() {
 
 export function Hero() {
   return (
-    <section className="relative overflow-hidden bg-gradient-to-br from-orange-600 via-kula-amber to-kula-gold pb-28 pt-16 text-white">
+    <section className="relative overflow-hidden bg-gradient-to-br from-[#B91915] via-kula-amber to-kula-gold pb-28 pt-16 text-white">
       <Squiggles className="left-[-40px] top-8 hidden sm:block" />
       <Squiggles className="right-[-60px] top-20 hidden rotate-180 sm:block" />
 

@@ -44,7 +44,7 @@ export function Waitlist() {
                 />
                 <button
                   type="submit"
-                  className="rounded-full bg-kula-amber px-7 py-3.5 font-semibold text-white shadow-glow transition hover:-translate-y-0.5 hover:bg-orange-600"
+                  className="rounded-full bg-kula-amber px-7 py-3.5 font-semibold text-white shadow-glow transition hover:-translate-y-0.5 hover:bg-[#B91915]"
                 >
                   Notify Me
                 </button>

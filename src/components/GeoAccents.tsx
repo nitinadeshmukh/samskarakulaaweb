@@ -2,7 +2,7 @@
 // Justinmind-style decoration (their site uses a pastel circle, a solid
 // triangle, and a dotted-grid square near feature illustrations). Original
 // shapes in our own palette, not a copy of their specific artwork.
-export function GeoCircle({ className = '', color = '#FBBF24' }: { className?: string; color?: string }) {
+export function GeoCircle({ className = '', color = '#E8453F' }: { className?: string; color?: string }) {
   return (
     <div
       className={`pointer-events-none absolute rounded-full opacity-70 ${className}`}
@@ -11,7 +11,7 @@ export function GeoCircle({ className = '', color = '#FBBF24' }: { className?: s
   );
 }
 
-export function GeoTriangle({ className = '', color = '#F97316' }: { className?: string; color?: string }) {
+export function GeoTriangle({ className = '', color = '#E0201B' }: { className?: string; color?: string }) {
   return (
     <svg className={`pointer-events-none absolute ${className}`} width="44" height="40" viewBox="0 0 44 40" fill="none">
       <path d="M22 2 L42 38 L2 38 Z" fill={color} opacity="0.85" />

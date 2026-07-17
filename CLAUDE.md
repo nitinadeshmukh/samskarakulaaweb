@@ -188,3 +188,14 @@ Direct user request: "I dont want background color on any website remove from al
 - Small in-card accent tints: `Features.tsx`'s feature-icon gradient swatch, `ServicesShowcase.tsx`'s service-icon swatch, `Problem.tsx`'s problem-icon swatch (all `kula-amber`/`kula-navy` tinted circles, not section backgrounds), and `Priests.tsx`'s inline phone-mockup illustration (`bg-[#FFF8EC]`/`bg-[#C2410C]`) which is decorative mockup content, not page chrome.
 
 See samskarakulaaapp's CLAUDE.md (§8ar) for the priest-app/admin-app half of this same revert.
+
+## Brand primary recolor — orange → fire red (2026-07-17)
+
+Direct follow-up to samskarakulaaapp's §8as recolor ("Use the same red for marketing site too") — that pass had explicitly excluded this site since the user's original request said "all the apps," not all 4 surfaces. This repo has no `saffron` scale (unlike the 3 apps) — its brand accent lives in the `kula` palette's `amber`/`gold` tokens plus a handful of raw Tailwind `orange-*` classes and hardcoded hex values, so the recolor touched all three:
+
+- **`tailwind.config.js`**: `kula.amber` `#F97316`→`#E0201B` (matches the apps' `saffron.500` exactly) and `kula.gold` `#FBBF24`→`#E8453F` (matches the apps' `saffron.400` — kept as the lighter of the two tokens so gradients/highlights that use both still read as two distinct tones, not a flat single red). `boxShadow.glow`'s two `rgba()` stops (previously `rgba(251,191,36,...)`/`rgba(249,115,22,...)`, gold/amber with alpha) updated to the equivalent new-color rgb.
+- **Raw `orange-600` classes** (`Hero.tsx`'s gradient first stop, `Waitlist.tsx`'s CTA button hover) → arbitrary-value `bg-[#B91915]`/`from-[#B91915]` (matches the apps' `saffron.600`), since this site doesn't have a `saffron-600` utility class to fall back to.
+- **Hardcoded hex** in `color=`/inline-style props (`RatingsReviews.tsx`'s star-rating SVG fill, `GeoAccents.tsx`'s decorative shape colors, `SacredSymbolIcon.tsx`'s icon color, `Priests.tsx`'s phone-mockup illustration) swapped 1:1 to the new values, same mapping used in samskarakulaaapp.
+- **Deliberately untouched**: the `kula.navy`/`navyDark`/`navyDeep` palette (a separate, unrelated brand color — the deep-navy CTA sections like `HowItWorks`/`PaymentTrust`/`Waitlist` keep their navy backgrounds, only their amber/gold accent text and buttons on top of that navy changed) and the `tone === 'amber'` string literal in `Hero.tsx`'s `CalendarMock` mock data (an internal variant-name key, not a rendered color value — it still maps to `bg-kula-amber`, which is now red).
+
+Verified: `tsc --noEmit` clean; browser-confirmed the Hero gradient renders red-to-red (previously red-to-orange) with no console errors.

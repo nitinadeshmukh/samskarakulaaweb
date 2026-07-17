@@ -8,7 +8,7 @@ interface IconProps {
   className?: string;
 }
 
-export function SacredSymbolIcon({ name, size = 28, color = '#F97316', className = '' }: IconProps) {
+export function SacredSymbolIcon({ name, size = 28, color = '#E0201B', className = '' }: IconProps) {
   const common = { width: size, height: size, viewBox: '0 0 24 24', className };
 
   switch (name) {

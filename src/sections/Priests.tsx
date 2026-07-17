@@ -9,7 +9,7 @@ function PriestAppMock() {
   return (
     <div className="mx-auto w-full max-w-[280px] rounded-[2.5rem] border-8 border-neutral-900 bg-neutral-900 shadow-2xl">
       <div className="overflow-hidden rounded-[1.75rem] bg-[#FFF8EC]">
-        <div className="flex items-center justify-between bg-[#C2410C] px-5 pb-4 pt-6">
+        <div className="flex items-center justify-between bg-[#931310] px-5 pb-4 pt-6">
           <p className="text-sm font-semibold text-white">My Jobs</p>
           <div className="h-6 w-6 rounded-full bg-white/25" />
         </div>
@@ -22,11 +22,11 @@ function PriestAppMock() {
             <div key={job.name} className="rounded-2xl bg-white p-3.5 shadow-sm">
               <p className="text-sm font-semibold text-neutral-900">{job.name}</p>
               <p className="text-xs text-neutral-500">{job.place}</p>
-              <p className="mt-1.5 text-xs font-semibold text-[#C2410C]">{job.status}</p>
+              <p className="mt-1.5 text-xs font-semibold text-[#931310]">{job.status}</p>
             </div>
           ))}
-          <div className="rounded-2xl border-2 border-dashed border-[#C2410C]/30 p-3.5 text-center">
-            <p className="text-xs font-semibold text-[#C2410C]">Capture Proof-of-Ritual</p>
+          <div className="rounded-2xl border-2 border-dashed border-[#931310]/30 p-3.5 text-center">
+            <p className="text-xs font-semibold text-[#931310]">Capture Proof-of-Ritual</p>
           </div>
         </div>
       </div>
@@ -58,7 +58,7 @@ export function Priests() {
           </a>
         </Reveal>
         <Reveal delay={150} className="relative">
-          <GeoCircle className="right-2 top-[-24px] h-20 w-20 sm:right-8" color="#FBBF24" />
+          <GeoCircle className="right-2 top-[-24px] h-20 w-20 sm:right-8" color="#E8453F" />
           <GeoTriangle className="bottom-2 left-0 sm:left-4" />
           <GeoDots className="right-[-8px] bottom-16 hidden sm:block" />
           <PriestAppMock />

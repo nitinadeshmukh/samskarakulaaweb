@@ -34,7 +34,7 @@ function Stars() {
   return (
     <div className="flex gap-0.5">
       {[1, 2, 3, 4, 5].map((n) => (
-        <svg key={n} width={16} height={16} viewBox="0 0 24 24" fill="#F97316">
+        <svg key={n} width={16} height={16} viewBox="0 0 24 24" fill="#E0201B">
           <path d="M12 2 L15 9 L22 9.5 L17 14.5 L18.5 22 L12 18 L5.5 22 L7 14.5 L2 9.5 L9 9 Z" />
         </svg>
       ))}
