@@ -24,7 +24,7 @@ const PROBLEMS = [
 export function Problem() {
   const ref = useSectionView('problem');
   return (
-    <section ref={ref} className="relative overflow-hidden bg-neutral-50 px-6 py-24">
+    <section ref={ref} className="relative overflow-hidden bg-white px-6 py-24">
       <SacredWallpaper />
       <GeoDots className="left-8 top-8 hidden lg:block" />
       <div className="relative z-10 mx-auto max-w-6xl">

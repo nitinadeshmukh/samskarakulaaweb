@@ -20,7 +20,7 @@ const SERVICES = [
 export function ServicesShowcase() {
   const ref = useSectionView('services');
   return (
-    <section ref={ref} id="services" className="relative overflow-hidden bg-neutral-50 px-6 py-24">
+    <section ref={ref} id="services" className="relative overflow-hidden bg-white px-6 py-24">
       <SacredWallpaper />
       <div className="relative z-10 mx-auto max-w-6xl">
         <Reveal className="mx-auto mb-14 max-w-2xl text-center">

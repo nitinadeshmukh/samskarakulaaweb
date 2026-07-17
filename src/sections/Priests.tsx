@@ -37,7 +37,7 @@ function PriestAppMock() {
 export function Priests() {
   const ref = useSectionView('priests');
   return (
-    <section ref={ref} id="priests" className="relative overflow-hidden bg-neutral-50 px-6 py-24">
+    <section ref={ref} id="priests" className="relative overflow-hidden bg-white px-6 py-24">
       <SacredWallpaper />
       <div className="relative z-10 mx-auto grid max-w-6xl items-center gap-14 sm:grid-cols-2">
         <Reveal>

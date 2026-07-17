@@ -17,7 +17,7 @@ const LEGAL_LINKS = [
 
 export function Footer() {
   return (
-    <footer className="relative overflow-hidden border-t border-neutral-200 bg-neutral-50 px-6 py-16">
+    <footer className="relative overflow-hidden border-t border-neutral-200 bg-white px-6 py-16">
       <SacredWallpaper />
       <div className="relative z-10 mx-auto max-w-6xl">
         <div className="grid grid-cols-2 gap-10 sm:grid-cols-5">

@@ -28,7 +28,7 @@ const FEATURES = [
 export function Features() {
   const ref = useSectionView('features');
   return (
-    <section ref={ref} id="features" className="relative overflow-hidden bg-neutral-50 px-6 py-24">
+    <section ref={ref} id="features" className="relative overflow-hidden bg-white px-6 py-24">
       <SacredWallpaper />
       <div className="relative z-10 mx-auto max-w-6xl">
         <Reveal className="mx-auto mb-16 max-w-2xl text-center">
