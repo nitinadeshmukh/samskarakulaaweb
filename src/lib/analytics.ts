@@ -66,3 +66,24 @@ export function trackEvent(eventName: string, properties: Record<string, unknown
       () => {},
     );
 }
+
+// Fires a Meta Pixel standard/custom event — separate from trackEvent above
+// (that's our own first-party pipe; this is Meta's, for ad-campaign
+// optimization and Custom Audiences). `window.fbq` only exists if
+// index.html's base Pixel snippet actually initialized (VITE_META_PIXEL_ID
+// set at build time) — a no-op everywhere else, same "never break the page"
+// contract as trackEvent.
+export function trackMetaEvent(eventName: string, properties: Record<string, unknown> = {}) {
+  if (typeof window === 'undefined' || typeof window.fbq !== 'function') return;
+  try {
+    window.fbq('track', eventName, properties);
+  } catch {
+    // ignore — a broken ad-pixel call must never break the page
+  }
+}
+
+declare global {
+  interface Window {
+    fbq?: (...args: unknown[]) => void;
+  }
+}

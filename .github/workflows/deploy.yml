@@ -23,6 +23,12 @@ jobs:
           # this var being *absent* in CI, not it being sensitive.
           VITE_SUPABASE_URL: https://api.samskarakula.com
           VITE_SUPABASE_ANON_KEY: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlIjoiYW5vbiIsImlzcyI6InN1cGFiYXNlIiwiaWF0IjoxNzgyOTcwNDIzLCJleHAiOjE5NDA2NTA0MjN9.hfK1ppf2SRaNw9r_pVFnjJK6KWVYEk72BNsywAdLQ48
+          # Empty until a real Pixel ID exists — index.html's inline guard
+          # keeps the Pixel off when this is blank, same "missing env var
+          # degrades to silently-off" contract as the two vars above. Set
+          # this to the real numeric Pixel ID (not a secret — ends up in the
+          # public JS bundle regardless) once Events Manager has one.
+          VITE_META_PIXEL_ID: ""
 
       - name: Sync static build to VPS
         uses: burnett01/rsync-deployments@7.0.1

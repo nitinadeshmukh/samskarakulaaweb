@@ -1,7 +1,7 @@
 import { useState } from 'react';
 
 import { Reveal } from '../components/Reveal';
-import { trackEvent } from '../lib/analytics';
+import { trackEvent, trackMetaEvent } from '../lib/analytics';
 
 // No waitlist-collection backend exists yet (no Edge Function/table for this,
 // and no third-party form service is wired up) — this intentionally only
@@ -16,6 +16,12 @@ export function Waitlist() {
     e.preventDefault();
     setSubmitted(true);
     trackEvent('waitlist_submitted', {});
+    // Standard Meta event — lets Meta's algorithm optimize ad delivery
+    // toward people likely to submit, and builds a Lead-based Custom
+    // Audience for Lookalikes. See the no-real-backend note above: this
+    // fires on every client-side "submit" regardless of whether the email
+    // actually reached anywhere, since nothing currently persists it.
+    trackMetaEvent('Lead');
   };
 
   return (

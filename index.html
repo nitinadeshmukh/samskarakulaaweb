@@ -52,6 +52,38 @@
       href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700;800&display=swap"
       rel="stylesheet"
     />
+
+    <!-- Meta Pixel — gated on VITE_META_PIXEL_ID (Vite's %VAR% HTML env
+         replacement, same mechanism as this file's __TITLE__ etc. but
+         Vite-native, not scripts/prerender.js's). Guarded so an unset/
+         un-substituted id (literal "%VITE_META_PIXEL_ID%", or empty if Vite
+         did substitute an empty env value) never calls fbq('init', '') —
+         matches src/lib/analytics.ts's "a missing env var must degrade to
+         silently-off, never crash/misbehave" rule. -->
+    <script>
+      (function () {
+        var pixelId = '%VITE_META_PIXEL_ID%';
+        if (!pixelId || pixelId.charAt(0) === '%') return;
+        !(function (f, b, e, v, n, t, s) {
+          if (f.fbq) return;
+          n = f.fbq = function () {
+            n.callMethod ? n.callMethod.apply(n, arguments) : n.queue.push(arguments);
+          };
+          if (!f._fbq) f._fbq = n;
+          n.push = n;
+          n.loaded = !0;
+          n.version = '2.0';
+          n.queue = [];
+          t = b.createElement(e);
+          t.async = !0;
+          t.src = v;
+          s = b.getElementsByTagName(e)[0];
+          s.parentNode.insertBefore(t, s);
+        })(window, document, 'script', 'https://connect.facebook.net/en_US/fbevents.js');
+        window.fbq('init', pixelId);
+        window.fbq('track', 'PageView');
+      })();
+    </script>
   </head>
   <body>
     <div id="root"></div>
