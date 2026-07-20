@@ -1,27 +1,35 @@
 import { useState } from 'react';
 
 import { Reveal } from '../components/Reveal';
-import { trackEvent, trackMetaEvent } from '../lib/analytics';
+import { submitWaitlistEmail, trackEvent, trackMetaEvent } from '../lib/analytics';
 
-// No waitlist-collection backend exists yet (no Edge Function/table for this,
-// and no third-party form service is wired up) — this intentionally only
-// shows a local "thanks" state rather than fabricating a successful submit.
-// Wire this to a real endpoint (a Supabase table + Edge Function, or a
-// service like Mailchimp/ConvertKit) before relying on it to capture leads.
+// Persists to the real waitlist_signups table (samskarakulaaapi migration
+// 0062) via submitWaitlistEmail — previously this only set local "thanks"
+// state with nothing actually captured.
 export function Waitlist() {
   const [email, setEmail] = useState('');
   const [submitted, setSubmitted] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [error, setError] = useState<string | null>(null);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setSubmitted(true);
-    trackEvent('waitlist_submitted', {});
-    // Standard Meta event — lets Meta's algorithm optimize ad delivery
-    // toward people likely to submit, and builds a Lead-based Custom
-    // Audience for Lookalikes. See the no-real-backend note above: this
-    // fires on every client-side "submit" regardless of whether the email
-    // actually reached anywhere, since nothing currently persists it.
-    trackMetaEvent('Lead');
+    setError(null);
+    setIsSubmitting(true);
+    try {
+      await submitWaitlistEmail(email);
+      setSubmitted(true);
+      trackEvent('waitlist_submitted', {});
+      // Standard Meta event — lets Meta's algorithm optimize ad delivery
+      // toward people likely to submit, and builds a Lead-based Custom
+      // Audience for Lookalikes. Now fires only after a real, persisted
+      // signup, not on every client-side "submit" regardless of outcome.
+      trackMetaEvent('Lead');
+    } catch {
+      setError("Something went wrong — please try again.");
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -50,12 +58,14 @@ export function Waitlist() {
                 />
                 <button
                   type="submit"
-                  className="rounded-full bg-kula-amber px-7 py-3.5 font-semibold text-white shadow-glow transition hover:-translate-y-0.5 hover:bg-[#B91915]"
+                  disabled={isSubmitting}
+                  className="rounded-full bg-kula-amber px-7 py-3.5 font-semibold text-white shadow-glow transition hover:-translate-y-0.5 hover:bg-[#B91915] disabled:opacity-60"
                 >
-                  Notify Me
+                  {isSubmitting ? 'Submitting…' : 'Notify Me'}
                 </button>
               </form>
             )}
+            {error && <p className="mt-3 text-sm text-red-300">{error}</p>}
           </div>
         </div>
       </Reveal>

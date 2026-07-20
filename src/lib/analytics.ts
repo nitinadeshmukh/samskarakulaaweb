@@ -87,3 +87,17 @@ declare global {
     fbq?: (...args: unknown[]) => void;
   }
 }
+
+// Real waitlist capture — reuses the same anon Supabase client as
+// trackEvent above (samskarakulaaapi migration 0062, insert-only from the
+// anon key). Waitlist.tsx previously only set local "submitted" state with
+// nothing actually persisted; this is what makes that state true. Throws
+// on failure so the caller can show an error instead of a false "thanks" —
+// unlike trackEvent, a lost waitlist signup is a real lead lost, not a
+// background analytics signal, so this one must NOT fail silently.
+export async function submitWaitlistEmail(email: string): Promise<void> {
+  if (!supabase) throw new Error('Waitlist signup is temporarily unavailable.');
+  const { error } = await supabase.from('waitlist_signups').insert({ email, source: 'website' });
+  // Unique violation (already on the list) — treat as success, not an error.
+  if (error && error.code !== '23505') throw error;
+}
